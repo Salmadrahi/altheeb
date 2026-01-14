@@ -89,6 +89,20 @@
             z-index: 2;
         }
 
+        /* Logo Styles */
+        .app-logo {
+            width: 80px;
+            height: 80px;
+            margin: 5px auto 10px;
+            display: block;
+            border-radius: 50%;
+            border: 2px solid var(--gold-base);
+            padding: 6px;
+            background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+            object-fit: contain;
+        }
+
         h1 {
             font-family: 'Cairo', sans-serif;
             font-weight: 900;
@@ -100,6 +114,52 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             filter: drop-shadow(0px 2px 3px rgba(0,0,0,0.8));
+        }
+
+        /* Subtitle Styles */
+        .app-subtitle {
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.9rem;
+            color: #aaa;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+        
+        .highlight-subtitle {
+            color: var(--gold-base);
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 400;
+            opacity: 0.9;
+            margin-top: 2px;
+        }
+
+        /* Improved Help Button */
+        .help-btn {
+            position: absolute;
+            top: 5px;
+            right: 0px;
+            background: rgba(212, 175, 55, 0.15);
+            border: 2px solid var(--gold-base);
+            color: var(--gold-base);
+            width: 38px; height: 38px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: 800;
+            font-size: 1.2rem;
+            font-family: 'Cairo', sans-serif;
+            display: flex; align-items: center; justify-content: center;
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+            z-index: 10;
+        }
+        .help-btn:hover { 
+            background: var(--gold-base); 
+            color: #000;
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
         }
 
         .status-light {
@@ -222,49 +282,6 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
         #img-preview { width: 100%; max-height: 200px; object-fit: cover; display: block; }
-
-        /* Voice Recorder Styles */
-        .voice-box {
-            background: #111;
-            border: 1px solid #333;
-            border-radius: 16px;
-            padding: 20px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .record-btn {
-            width: 70px; height: 70px;
-            border-radius: 50%;
-            background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
-            border: 2px solid var(--gold-dark);
-            color: var(--gold-base);
-            font-size: 24px;
-            cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-            transition: 0.2s;
-            user-select: none;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .record-btn.recording {
-            background: #4a0000;
-            border-color: #ff0000;
-            color: #ff0000;
-            animation: pulse-red 1.5s infinite;
-        }
-
-        @keyframes pulse-red {
-            0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.4); }
-            70% { box-shadow: 0 0 0 20px rgba(255, 0, 0, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
-        }
-
-        .voice-status { font-size: 0.8rem; color: #666; font-weight: 600; min-height: 1.2em; }
 
         /* PHASE 3: Halal/Spicy Toggle */
         .tone-toggle-container {
@@ -476,6 +493,52 @@
             background-size: 1em;
             padding-left: 2.5rem;
         }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 999;
+            display: none;
+            justify-content: center; align-items: center;
+            backdrop-filter: blur(5px);
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .modal-content {
+            background: linear-gradient(145deg, #111111, #080808);
+            border: 2px solid var(--gold-dark);
+            width: 100%; max-width: 350px;
+            border-radius: 20px;
+            padding: 25px;
+            color: #ddd;
+            text-align: right;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+        }
+        .modal-title {
+            color: var(--gold-base);
+            font-family: 'Cairo', sans-serif;
+            font-weight: 800;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .help-item {
+            margin-bottom: 12px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+        }
+        .help-item:last-child { border-bottom: none; }
+        .help-icon { color: var(--gold-base); width: 25px; display: inline-block; text-align: center; margin-left: 5px;}
+        .help-strong { color: #fff; font-weight: 700; font-family: 'Cairo', sans-serif;}
+        .close-modal {
+            position: absolute; top: 15px; left: 15px;
+            color: #666; cursor: pointer; font-size: 1.2rem;
+            width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; background: #1a1a1a;
+        }
+        .close-modal:hover { color: #fff; background: #333; }
     </style>
 </head>
 <body>
@@ -486,16 +549,21 @@
                 <div class="status-dot"></div>
                 v3.0 الطور الثالث
             </div>
+            
+            <!-- Logo Section: Change src to your own logo URL -->
+            <img src="https://i.ibb.co/Fkvqng8h/151921.png" alt="شعار الذيب" class="app-logo">
+
             <h1>الذيب</h1>
+            <div class="app-subtitle">
+                <span class="highlight-subtitle">كن أفضل في التحدث مع الفتيات... وخليك ذيب</span>
+            </div>
+            <button class="help-btn" onclick="toggleHelp()">?</button>
         </header>
 
         <!-- Mode Toggle -->
         <div class="mode-switch">
             <button class="mode-btn active" onclick="setMode('image')" id="btn-img">
                 <i class="fas fa-image"></i> تحليل صورة
-            </button>
-            <button class="mode-btn" onclick="setMode('voice')" id="btn-voice">
-                <i class="fas fa-microphone"></i> تحليل صوت
             </button>
             <button class="mode-btn" onclick="setMode('text')" id="btn-txt">
                 <i class="fas fa-feather-alt"></i> نص
@@ -512,23 +580,12 @@
             <div id="input-image">
                 <div class="upload-zone" onclick="document.getElementById('file-field').click()">
                     <i class="fas fa-cloud-upload-alt" style="font-size: 32px; margin-bottom: 8px;"></i>
-                    <div class="upload-text">اضغط لرفع صورة المحادثة</div>
+                    <div class="upload-text">اضغط لرفع صورة المحادثة ..او الصوره التي تريد التعليق عليها</div>
                     <input type="file" id="file-field" hidden accept="image/*" onchange="handleFile(this)">
                 </div>
                 <div id="preview-box">
                     <img id="img-preview">
                     <div class="clear-img" onclick="clearImage()"><i class="fas fa-times"></i></div>
-                </div>
-            </div>
-
-            <!-- Voice Input -->
-            <div id="input-voice" class="hidden">
-                <div class="voice-box">
-                    <button class="record-btn" id="record-btn" onmousedown="startRecording()" onmouseup="stopRecording()" ontouchstart="startRecording()" ontouchend="stopRecording()">
-                        <i class="fas fa-microphone"></i>
-                    </button>
-                    <div class="voice-status" id="voice-status">اضغط مع الاستمرار للتسجيل</div>
-                    <audio id="audio-playback" controls style="width: 100%; display:none; height: 30px; margin-top: 10px;"></audio>
                 </div>
             </div>
 
@@ -540,7 +597,7 @@
             <!-- Rizz Meter Input -->
             <div id="input-rate" class="hidden">
                 <label>رسالتك المقترحة:</label>
-                <textarea id="rate-field" placeholder="اكتب الرد لتقييمه..."></textarea>
+                <textarea id="rate-field" placeholder="اكتب الرد لتقييمه... وخليك ذيب"></textarea>
             </div>
         </div>
 
@@ -577,6 +634,7 @@
                         <option value="iraqi">عراقي</option>
                         <option value="maghrebi">مغاربي</option>
                         <option value="white">لهجة بيضاء</option>
+                        <option value="english">English / انجليزي</option>
                     </select>
                 </div>
             </div>
@@ -601,20 +659,47 @@
         <div id="results" class="results-area"></div>
     </div>
 
+    <!-- Help Modal -->
+    <div id="help-modal" class="modal-overlay" onclick="toggleHelp()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="close-modal" onclick="toggleHelp()"><i class="fas fa-times"></i></div>
+            <div class="modal-title"><i class="fas fa-info-circle"></i> كيف تستخدم "الذيب"</div>
+            
+            <div class="help-item">
+                <span class="help-icon">📸</span> <span class="help-strong">تحليل صورة:</span> ارفع سكرين شوت للمحادثة، الذيب بيقراها ويعطيك أفضل رد.
+            </div>
+            <div class="help-item">
+                <span class="help-icon">✍️</span> <span class="help-strong">نص:</span> انسخ الكلام والصقه، أو اكتب وصف للموقف.
+            </div>
+            <div class="help-item">
+                <span class="help-icon">🌶️</span> <span class="help-strong">سبايسي / حلال:</span>
+                <br> <small style="color:#aaa;">🕌 حلال: ردود محترمة ورسمية.</small>
+                <br> <small style="color:#aaa;">🌶️ سبايسي: ردود جريئة وفيها لعب.</small>
+            </div>
+            <div class="help-item">
+                <span class="help-icon">⭐</span> <span class="help-strong">تقييم:</span> اكتب ردك اللي ناوي ترسله، والذيب بيقيمه لك من 10 ويعطيك نصائح.
+            </div>
+        </div>
+    </div>
+
     <div id="toast"><i class="fas fa-clipboard-check"></i> تم نسخ النص بنجاح</div>
 
     <script>
         // CONFIG
-        const apiKey = ""; // Runtime key
+        const apiKey = "AIzaSyADANqOld1mkqN_Dm5SrJ74eceo_uj0D3Y"; // Runtime key
         let currentMode = 'image';
         let base64Data = "";
         let isSpicy = false; // Phase 3 State
         
-        // Audio Vars
-        let mediaRecorder;
-        let audioChunks = [];
-        let recordedAudioBlob = null;
-        let recordedAudioBase64 = "";
+        // --- HELP MODAL ---
+        function toggleHelp() {
+            const modal = document.getElementById('help-modal');
+            if(modal.style.display === 'flex') {
+                modal.style.display = 'none';
+            } else {
+                modal.style.display = 'flex';
+            }
+        }
 
         // --- MODE SWITCHING ---
         function setMode(mode) {
@@ -622,7 +707,7 @@
             document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
             
             // Reset inputs
-            ['input-image', 'input-text', 'input-rate', 'input-voice'].forEach(id => document.getElementById(id).classList.add('hidden'));
+            ['input-image', 'input-text', 'input-rate'].forEach(id => document.getElementById(id).classList.add('hidden'));
             
             const btnText = document.getElementById('btn-text');
             const toneGroup = document.getElementById('tone-control-group');
@@ -636,10 +721,6 @@
                 document.getElementById('btn-img').classList.add('active');
                 document.getElementById('input-image').classList.remove('hidden');
                 btnText.textContent = "توليد الردود";
-            } else if (mode === 'voice') {
-                document.getElementById('btn-voice').classList.add('active');
-                document.getElementById('input-voice').classList.remove('hidden');
-                btnText.textContent = "تحليل الصوت";
             } else if (mode === 'text') {
                 document.getElementById('btn-txt').classList.add('active');
                 document.getElementById('input-text').classList.remove('hidden');
@@ -684,36 +765,6 @@
             base64Data = "";
         }
 
-        // --- AUDIO RECORDING ---
-        async function startRecording() {
-            try {
-                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-                mediaRecorder = new MediaRecorder(stream);
-                audioChunks = [];
-                mediaRecorder.ondataavailable = event => audioChunks.push(event.data);
-                mediaRecorder.onstop = () => {
-                    recordedAudioBlob = new Blob(audioChunks, { type: 'audio/webm' });
-                    const audioUrl = URL.createObjectURL(recordedAudioBlob);
-                    const audioEl = document.getElementById('audio-playback');
-                    audioEl.src = audioUrl; audioEl.style.display = 'block';
-                    const reader = new FileReader();
-                    reader.readAsDataURL(recordedAudioBlob);
-                    reader.onloadend = () => recordedAudioBase64 = reader.result.split(',')[1];
-                };
-                mediaRecorder.start();
-                document.getElementById('record-btn').classList.add('recording');
-                document.getElementById('voice-status').innerText = "جاري التسجيل... ارفع اصبعك للإيقاف";
-            } catch (err) { console.error("Mic Error:", err); showToast("يرجى السماح بالمايكروفون"); }
-        }
-
-        function stopRecording() {
-            if (mediaRecorder && mediaRecorder.state !== 'inactive') {
-                mediaRecorder.stop();
-                document.getElementById('record-btn').classList.remove('recording');
-                document.getElementById('voice-status').innerText = "تم التسجيل!";
-            }
-        }
-
         // --- MAIN LOGIC ---
         async function generateRizz() {
             const objective = document.getElementById('objective').value;
@@ -725,7 +776,6 @@
 
             // Validation
             if (currentMode === 'image' && !base64Data) { showToast("الرجاء رفع صورة"); return; }
-            if (currentMode === 'voice' && !recordedAudioBase64) { showToast("الرجاء تسجيل صوت"); return; }
             if (currentMode === 'text' && !document.getElementById('text-field').value.trim()) { showToast("الرجاء إدخال نص"); return; }
             if (currentMode === 'rate' && !document.getElementById('rate-field').value.trim()) { showToast("الرجاء كتابة رسالتك"); return; }
 
@@ -735,12 +785,13 @@
 
             let contextData = [];
             let sysInstruction = "";
+            let targetLanguage = dialect === 'english' ? "English" : "Arabic";
 
             if (currentMode === 'rate') {
                 const myLine = document.getElementById('rate-field').value;
                 sysInstruction = `
-                Role: Harsh Arab Dating Judge. Dialect: ${dialect}.
-                Task: Rate the line (1-10), Explain briefly in Arabic, Suggest improvement.
+                Role: Harsh Dating Judge. Language: ${targetLanguage}.
+                Task: Rate the line (1-10), Explain briefly, Suggest improvement.
                 Output JSON: { "score": "X/10", "feedback": "...", "better_version": "..." }
                 `;
                 contextData = [{ parts: [{ text: `Rate: "${myLine}"` }] }];
@@ -751,11 +802,11 @@
                     : "MODE: HALAL (🕌). STRICTLY respectful, polite, suitable for family contexts or serious intent. NO overt sexual flirting.";
 
                 sysInstruction = `
-                Role: Charismatic Arab Rizz Consultant.
-                Objective: ${objective}. Vibe: ${vibe}. Dialect: ${dialect}.
+                Role: Charismatic Rizz Consultant.
+                Objective: ${objective}. Vibe: ${vibe}. Dialect/Language: ${dialect}.
                 ${modeInstruction}
                 
-                Task: Generate 3 responses.
+                Task: Generate 3 responses in ${targetLanguage}.
                 IMPORTANT: For each response, provide a specific 'emojis' string.
                 
                 Output: STRICTLY a JSON array of objects: 
@@ -765,20 +816,13 @@
                 if (currentMode === 'image') {
                     contextData = [{
                         parts: [
-                            { text: "Analyze image & provide 3 Arabic responses with emojis." },
+                            { text: `Analyze image & provide 3 ${targetLanguage} responses with emojis.` },
                             { inline_data: { mime_type: "image/jpeg", data: base64Data } }
-                        ]
-                    }];
-                } else if (currentMode === 'voice') {
-                    contextData = [{
-                        parts: [
-                            { text: "Analyze voice tone & provide 3 Arabic responses with emojis." },
-                            { inline_data: { mime_type: "audio/webm", data: recordedAudioBase64 } }
                         ]
                     }];
                 } else {
                     const textVal = document.getElementById('text-field').value;
-                    contextData = [{ parts: [{ text: `Context: ${textVal}. Provide 3 Arabic responses with emojis.` }] }];
+                    contextData = [{ parts: [{ text: `Context: ${textVal}. Provide 3 ${targetLanguage} responses with emojis.` }] }];
                 }
             }
 
@@ -799,6 +843,9 @@
                 if (!data.candidates) throw new Error("No response");
                 
                 let rawText = data.candidates[0].content.parts[0].text;
+                // Cleanup potentially markdown-wrapped JSON
+                rawText = rawText.replace(/```json|```/g, '').trim();
+                
                 const parsedData = JSON.parse(rawText);
 
                 if (currentMode === 'rate') {
@@ -829,7 +876,7 @@
                         let emojiHtml = item.emojis ? `<div class="emoji-strategy">الإيموجي المقترح: <span class="emoji-combo">${item.emojis}</span></div>` : '';
                         
                         card.innerHTML = `
-                            <div class="rizz-text">${item.text}</div>
+                            <div class="rizz-text" style="direction: ${dialect === 'english' ? 'ltr' : 'rtl'}; text-align: ${dialect === 'english' ? 'left' : 'right'}">${item.text}</div>
                             ${emojiHtml}
                             <div class="card-actions">
                                 <div class="action-btn" onclick="copyText('${item.text} ${item.emojis || ''}')"><i class="fas fa-copy"></i></div>
@@ -853,7 +900,7 @@
             if (navigator.clipboard && window.isSecureContext) {
                 navigator.clipboard.writeText(text).then(() => showToast("تم النسخ!"));
             } else {
-                // Fallback for older browsers or non-secure contexts
+                // Fallback for older browsers or non-secure contexts (iframes)
                 const textArea = document.createElement("textarea");
                 textArea.value = text;
                 textArea.style.position = "fixed";
@@ -935,4 +982,8 @@
         }
     </script>
 </body>
+</html>}
+    </script>
+</body>
+
 </html>
